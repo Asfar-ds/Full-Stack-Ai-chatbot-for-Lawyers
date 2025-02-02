@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Legal Assistant</title>
+
+    <link rel="stylesheet" href="/static/css/style.css">
+    <!-- Markdown processing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
+    <!-- Syntax highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/highlight.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/styles/default.min.css">
+</head>
+<body>
+    <div class="sidebar">
+        <h1>🏛️💬 AI Legal Assistant</h1>
+        <p class="sidebar-description">The model is trained on 512 contract files...</p>
+        
+        <div class="upload-section">
+            <input type="file" id="file-upload">
+            <button onclick="uploadFile()">Add Document</button>
+        </div>
+
+        <div class="settings">
+            <label for="model-select">Model:</label>
+            <select id="model-select">
+                <option value="llama3-70b-8192">Llama 3 70b</option>
+                <option value="llama-3.1-8b-instant">Llama 3 8b</option>
+            </select>
+
+            <label>Temperature: <span id="temp-value">0.5</span></label>
+            <input type="range" id="temperature" min="0.01" max="1.0" step="0.1" value="0.5">
+
+            <label>P Value: <span id="p-value">0.9</span></label>
+            <input type="range" id="p-value-input" min="0.01" max="1.0" step="0.1" value="0.9">
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="chat-container">
+            <div id="chat-history"></div>
+            <div class="input-container">
+                <input type="text" id="user-input" placeholder="Ask a question about contracts...">
+                <button onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/script.js"></script>
+</body>
+</html>
