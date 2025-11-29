@@ -1,12 +1,13 @@
 from flask import Flask, render_template, request, jsonify
 from langchain_community.document_loaders import DirectoryLoader, PyPDFLoader, TextLoader
-from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_groq import ChatGroq
-from langchain.vectorstores import FAISS
+from langchain_community.vectorstores import FAISS
 from langchain_core.messages import HumanMessage, SystemMessage
 import os
 from dotenv import load_dotenv
+
 
 load_dotenv()
 
@@ -116,4 +117,5 @@ def handle_upload():
     return jsonify({'success': True})
 
 if __name__ == '__main__':
+
     app.run(debug=True)
